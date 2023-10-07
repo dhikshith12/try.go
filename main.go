@@ -100,6 +100,20 @@ func main() {
 	for i := 1; i < 100; i++ {
 		fmt.Println(yearUntilEvents(i))
 	}
+
+	quotient, err := divide(5, 2)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("quotient:", quotient)
+
+	msg3 := messageToSend {
+		phoneNumber: 5551234567,
+		message: "Hello, world!",
+	}
+
+	fmt.Println(msg3)
 }
 var add func(a, b int) int = func(a int, b int) int {
 	return a+b;
@@ -140,4 +154,22 @@ func yearUntilEvents(age int) (
 	yearsUntilDrinking = max(0, 21 - age)
 	yearsUntilRetirement = max(0, 65 - age)
 	return;
+}
+
+func divide(dividend, divisor int) (float64, error) {
+	// early return
+	if divisor == 0 {
+		return 0, fmt.Errorf("can't divide by 0")
+	}
+	return float64(dividend) / float64(divisor), nil
+}
+
+func canSendMessage(mToSend messageToSend) bool {
+	if mToSend.message == "" {
+		return false
+	}
+	if mToSend.phoneNumber == 0 {
+		return false
+	}
+	return true;
 }
