@@ -63,3 +63,40 @@ func loadTruck(){
 	fmt.Println(lanesTruck.Weight)
 	fmt.Println(lanesTruck.Wheel)
 }
+
+
+type employee interface {
+	getName() string
+	getSalary() int
+}
+
+type contractor struct {
+	name 			string
+	hourlyRate 		int
+	hoursPerYear 	int
+}
+
+func (c contractor) getName() string {
+	return c.name
+}
+
+func (c contractor) getSalary() int {
+	return c.hourlyRate * c.hoursPerYear
+}
+
+type fullTime struct {
+	name 		string
+	salary 		int
+}
+
+func (f fullTime) getName() string {
+	return f.name
+}
+
+func (f fullTime) getSalary() int {
+	return f.salary
+}
+
+func printEmployee(e employee) {
+	fmt.Println("name:", e.getName(), "salary:", e.getSalary())
+}

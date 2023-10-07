@@ -141,7 +141,30 @@ func main() {
 	}
 
 	fmt.Println(auth.autherizationString())
+
+	charlie := fullTime{
+		name: "Charlie",
+		salary: 60000,
+	}
+
+	bob := contractor{
+		name: "Bob",
+		hourlyRate: 50,
+		hoursPerYear: 2080,
+	}
+
+	jill := fullTime{
+		name: "Jill",
+		salary: 120000,
+	}
+
+	employees := []employee{charlie, bob, jill}
+
+	for i := 0; i < len(employees); i++ {
+		printEmployee(employees[i])
+	}
 }
+
 
 var add func(a, b int) int = func(a int, b int) int {
 	return a+b;
