@@ -100,3 +100,93 @@ func (f fullTime) getSalary() int {
 func printEmployee(e employee) {
 	fmt.Println("name:", e.getName(), "salary:", e.getSalary())
 }
+
+// interface{} is an empty interface, which means that it can be used to
+// represent any type of data, in fact every type implements the empty
+// interface, so any type can be passed into a function that takes an
+
+type expense interface {
+	cost() float64
+}
+
+type printer interface {
+	print() 
+}
+
+type email struct {
+	isSubscribed bool
+	body string
+}
+
+type sms struct {
+	isSubscribed bool
+	body string
+	toPhoneNumber string
+}
+
+func (e email) cost() float64 {
+	x := float64(len(e.body))
+	if !e.isSubscribed {
+		return 0.05 * x;
+	}
+	return 0.01 * x;
+}
+
+func (s sms) cost() float64 {
+	x := float64(len(s.body))
+	if !s.isSubscribed {
+		return 0.05 * x;
+	}
+	return 0.01 * x;
+}
+
+func (e email) print() {
+	fmt.Println(e.body)
+}
+
+type Copier interface {
+	Copy(sourceFile string, destinationFile string) (bytesCopied int, err error)
+}
+
+type Shape interface {
+	area() float64
+}
+
+type Circle struct {
+	radius float64
+}
+
+func (c Circle) area() float64 {
+	return 3.14 * c.radius * c.radius
+}
+type Rectangle struct {
+	width float64
+	height float64
+}
+
+func (r Rectangle) area() float64 {
+	return r.width * r.height
+}
+
+func getExpenseReport(e expense) (string, float64) {
+	em, ok := e.(email)
+	if ok {
+		return em.body, em.cost()
+	}
+	s, ok := e.(sms)
+	if ok {
+		return s.body, s.cost()
+	}
+	return "", 0
+}
+
+func printNumericalValue(num interface{}) {
+	switch v:= num.(type){
+	case int:
+		fmt.Println(v)
+	case float64:
+		fmt.Println(v)
+	default:
+		fmt.Println("unknown type")
+	}
+}

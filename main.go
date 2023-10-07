@@ -160,9 +160,28 @@ func main() {
 
 	employees := []employee{charlie, bob, jill}
 
+	// go is very primitive compared to other languages
 	for i := 0; i < len(employees); i++ {
 		printEmployee(employees[i])
 	}
+
+	email := email{
+		isSubscribed: true,
+		body: "Hello, world!",
+	}
+
+	sms := sms{
+		toPhoneNumber: "5551234567",
+		body: "Hello, world!",
+		isSubscribed: true,
+	}
+
+	test(email, email);
+
+	bdy, cst:= getExpenseReport(sms)
+
+	fmt.Println(bdy, cst)
+
 }
 
 
@@ -223,4 +242,10 @@ func canSendMessage(mToSend messageToSend) bool {
 		return false
 	}
 	return true;
+}
+
+func test(e expense, p printer) {
+	fmt.Printf("Expense: $%.2f\n", e.cost())
+	p.print()
+	fmt.Println("-----")
 }
