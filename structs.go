@@ -17,3 +17,12 @@ type car struct {
 		Spokes int
 	}
 }
+
+type rect struct {
+	width int
+	height int
+}
+
+func (r rect) area() int {
+	return r.width * r.height
+}

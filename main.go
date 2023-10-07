@@ -127,6 +127,12 @@ func main() {
 
 	fmt.Println(myCar)
 
+	r := rect{
+		width: 5,
+		height: 10,
+	}
+
+	fmt.Println("area:", r.area())
 }
 
 var add func(a, b int) int = func(a int, b int) int {
