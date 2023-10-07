@@ -133,6 +133,7 @@ func main() {
 	}
 
 	fmt.Println("area:", r.area())
+	loadTruck();
 }
 
 var add func(a, b int) int = func(a int, b int) int {
