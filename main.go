@@ -114,7 +114,21 @@ func main() {
 	}
 
 	fmt.Println(msg3)
+
+	fmt.Println("can send message?:", canSendMessage(msg3))
+
+	myCar := struct {
+		make string
+		model string
+	} {
+		make: "Ford",
+		model: "F150",
+	}
+
+	fmt.Println(myCar)
+
 }
+
 var add func(a, b int) int = func(a int, b int) int {
 	return a+b;
 }
