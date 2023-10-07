@@ -22,7 +22,7 @@ type car struct {
 	}
 }
 
-type rect struct {
+type rect struct{
 	width int
 	height int
 }
